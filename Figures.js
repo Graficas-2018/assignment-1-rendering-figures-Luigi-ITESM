@@ -249,12 +249,13 @@ function createSphere(gl, radius)
     // Then to get x we apply cos, to y we apply sin and to z will be 0.0
     // Then we draw the lines
     // You can play with the start in degrees and the end to make a pacman :v
+     verts.push(0.0, 0.0, 0.0);
 
     for (var degrees = 30; degrees < 310; degrees++) {
 
         var degreeToPolar = degrees * Math.PI / 180;
 
-        verts.push(0.0, 0.0, 0.0);
+        //verts.push(0.0, 0.0, 0.0);
         verts.push(Math.cos(degreeToPolar) * radius, Math.sin(degreeToPolar) * radius, 0.0);
 
         //console.log(degrees + ': ' + verts[degrees * 6 + 3] + ',' + verts[degrees * 6 + 4] + ',' + verts[degrees * 6 + 5]);
@@ -268,6 +269,6 @@ function createSphere(gl, radius)
     // usage = A GLenum specifying the usage pattern of the data store. gl.STATIC_DRAW: Contents of the buffer are likely to be used often and not change often. Contents are written to the buffer, but not read.
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
 
-    var sphere = {buffer:vertexBuffer, vertSize:3, nVerts:560, primtype:gl.LINES};
+    var sphere = {buffer:vertexBuffer, vertSize:3, nVerts:281, primtype:gl.TRIANGLE_FAN};
     return sphere;
 }        
